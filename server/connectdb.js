@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
+const MONGODB_URI = "mongodb://localhost";
 
 export default function () {
-    mongoose.connect("mongodb+srv://abhisheks:admin@cluster0.gr3w7.mongodb.net/personal", {
+    mongoose.connect(MONGODB_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     });
