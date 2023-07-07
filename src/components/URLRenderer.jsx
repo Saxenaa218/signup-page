@@ -3,8 +3,14 @@ import { CloseOutlined } from "@ant-design/icons";
 import { Button, Form, Input } from "antd";
 
 export default function URLRenderer({ config, onClose }) {
-    console.log(config);
     const { heading, label, uniqueName, isRequired, placeholder, subHeading } = config;
+
+    const onFinish = values => {
+        console.log("Success:", values);
+    };
+    const onFinishFailed = errorInfo => {
+        console.log("Failed:", errorInfo);
+    };
 
     return (
         <div className="border border-slate-300 h-full">
@@ -27,6 +33,8 @@ export default function URLRenderer({ config, onClose }) {
                     style={{
                         maxWidth: 600
                     }}
+                    onFinish={onFinish}
+                    onFinishFailed={onFinishFailed}
                 >
                     <Form.Item label={label} name={uniqueName} rules={[{ required: isRequired, message: "Please add a valid URL!", type: "url" }]}>
                         <Input placeholder={placeholder} />
